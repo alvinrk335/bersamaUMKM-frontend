@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw  ;
+  height: 15vh;
+  background-color: transparent;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 10vh;
+  background-color: darkblue;
+  border-radius: 15vh;
+}
