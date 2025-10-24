@@ -2,6 +2,7 @@ import "./navbar.css";
 import Logo from "./logo";
 import Home from "../assets/homeLogo.png";
 import About from "../assets/aboutLogo.png";
+import SearchBar from "./searchBar";
 
 function Navbar() {
   return (
@@ -9,6 +10,7 @@ function Navbar() {
       <nav className="nav-container">
         <div className="nav-content">
           <Logo width={20} height={6} />
+          <SearchBar />
           <div className="nav-clickable-container">
             <a href="#" className="nav-home">
               <img src={Home}></img>
