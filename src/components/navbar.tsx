@@ -1,9 +1,27 @@
 import "./navbar.css";
+import Logo from "./logo";
+import Home from "../assets/homeLogo.png";
+import About from "../assets/aboutLogo.png";
 
 function Navbar() {
   return (
     <div className="container">
-      <nav className="nav-container"></nav>
+      <nav className="nav-container">
+        <div className="nav-content">
+          <Logo width={20} height={6} />
+          <div className="nav-clickable-container">
+            <a href="#" className="nav-home">
+              <img src={Home}></img>
+            </a>
+            <a href="#" className="nav-aboutUs">
+              <img src={About}></img>
+            </a>
+            <button className="nav-login">
+              <span>Login</span>
+            </button>
+          </div>
+        </div>
+      </nav>
     </div>
   );
 }
