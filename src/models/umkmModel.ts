@@ -118,7 +118,6 @@ export class Umkm {
       json.latitude,
       json.longitude,
       json.userId,
-      json.id
     );
   }
 }

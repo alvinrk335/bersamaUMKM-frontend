@@ -27,9 +27,26 @@
 }
 
 .carousel-content {
-  width: 90%;
   display: flex;
+  gap: 5vw;
   align-items: center;
   justify-content: space-around;
-  background-color: red;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* For Firefox */
+  color: black;
+}
+
+.carousel-wrapper {
+  padding: 2vw;
+  width: 90%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.arrow-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,0 +1,19 @@
+/* .umkm-preview-card {
+  border-radius: 20px;
+  border: black 2px solid;
+} */
+
+.umkm-preview-image {
+  width: auto;
+  height: 25vh;
+  border-radius: 15px;
+}
+
+.umkm-preview-info-container {
+  margin-top: 1vh;
+}
+
+.umkm-preview-name {
+  font-size: large;
+  font-weight: bold;
+}
