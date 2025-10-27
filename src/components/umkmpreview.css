@@ -1,19 +1,62 @@
-/* .umkm-preview-card {
-  border-radius: 20px;
-  border: black 2px solid;
-} */
+.umkm-preview-card {
+  padding: 1.2em;
+  border-radius: 16px;
+  background-color: var(--color-secondary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  overflow: hidden;
+  max-width: 280px;
+  min-width: 220px;
+}
+
+.umkm-preview-card:hover {
+  transform: translateX(8px) translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 24px lightgray;
+  border-color: var(--color-primary);
+}
 
 .umkm-preview-image {
-  width: auto;
-  height: 25vh;
-  border-radius: 15px;
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.umkm-preview-card:hover .umkm-preview-image {
+  transform: scale(1.05);
 }
 
 .umkm-preview-info-container {
-  margin-top: 1vh;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
 }
 
 .umkm-preview-name {
-  font-size: large;
-  font-weight: bold;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+
+.umkm-preview-location {
+  font-size: 0.9rem;
+  color: rgba(27, 56, 84, 0.7);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+.loading-gif {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
 }

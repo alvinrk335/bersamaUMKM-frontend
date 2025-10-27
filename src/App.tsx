@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Route, BrowserRouter, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/navbar.tsx";
 import Home from "./page/home/home.tsx";
@@ -12,13 +12,13 @@ function App() {
   }, []);
 
   return (
-    <>
+    <body>
       <Navbar />
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/umkm/${type}" element="#" />
       </Routes>
-    </>
+    </body>
   );
 }
 

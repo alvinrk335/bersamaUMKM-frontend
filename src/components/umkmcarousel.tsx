@@ -4,43 +4,22 @@ import UmkmPreview from "./umkmpreview";
 import { useEffect, useRef, useState } from "react";
 import { Umkm } from "../models/umkmModel";
 
-function UmkmCarousel({ type }: { type: string }) {
-  const [umkmData, setUmkmData] = useState<
-    (Umkm & { locationString?: string })[]
-  >([]);
+function UmkmCarousel({ data }: { data: Umkm[] }) {
+  const [umkmData, setUmkmData] = useState<Umkm[]>(data);
+
   const [noData, setNoData] = useState(false);
   const [autoScroll, setAutoScroll] = useState(true);
   const carouselRef = useRef<HTMLDivElement>(null);
-  const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL;
+  const type = data.length > 0 ? data[0].type : "UMKM";
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`${backendUrl}/umkm/get/${type}`);
-      const data = await response.json();
-
-      if (response.status === 200) {
-        console.log(data);
-        const umkmList = data.map((item: any) => Umkm.fromJSON(item));
-
-        const umkmWithLocation = await Promise.all(
-          umkmList.map(async (umkm: any) => {
-            const locationString = await convertLocation(
-              umkm.latitude,
-              umkm.longitude
-            );
-            return { ...umkm, locationString };
-          })
-        );
-
-        setUmkmData(umkmWithLocation);
-      } else {
-        console.error("Failed to fetch UMKM data");
-        setNoData(true);
-        return;
-      }
-    };
-    fetchData();
-  }, []);
+    if (data.length === 0) {
+      setNoData(true);
+    } else {
+      setNoData(false);
+    }
+    setUmkmData(data);
+  }, [data]);
 
   useEffect(() => {
     if (!autoScroll) return;
@@ -62,7 +41,7 @@ function UmkmCarousel({ type }: { type: string }) {
             }, 500);
           }
         }
-      }, 3000);
+      }, 7000);
 
       return () => clearInterval(interval);
     }
@@ -88,23 +67,6 @@ function UmkmCarousel({ type }: { type: string }) {
     return () => clearTimeout(timeout);
   }
 
-  async function convertLocation(
-    latitude: number,
-    longitude: number
-  ): Promise<string> {
-    const response = await fetch(`${backendUrl}/location/from/coordinates`, {
-      method: "POST",
-      body: JSON.stringify({ latitude, longitude }),
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      return data.address.road + ", " + data.address.city;
-    } else {
-      console.error("Failed to convert location");
-      return "";
-    }
-  }
   return (
     <div className="carousel-container">
       <div className="carousel-header">
@@ -116,31 +78,31 @@ function UmkmCarousel({ type }: { type: string }) {
         </div>
       </div>
       <div className="carousel-wrapper">
-        <span
-          className="arrow-button"
-          onClick={() => handleArrowButtonClick("left")}
-        >
-          <button> &#8592;</button>
-        </span>
+        {!noData && (
+          <span
+            className="arrow-button"
+            onClick={() => handleArrowButtonClick("left")}
+          >
+            <button> &#8592;</button>
+          </span>
+        )}
+
         <div className="carousel-content" ref={carouselRef}>
           {noData ? (
             <div className="no-data-message">No UMKM data available</div>
           ) : (
-            umkmData.map((umkmData) => (
-              <UmkmPreview
-                image={umkmData.photoUrl}
-                name={umkmData.name}
-                location={umkmData.locationString}
-              />
-            ))
+            umkmData.map((item) => <UmkmPreview data={item} />)
           )}
         </div>
-        <span
-          className="arrow-button"
-          onClick={() => handleArrowButtonClick("left")}
-        >
-          <button> &#8594;</button>
-        </span>
+
+        {!noData && (
+          <span
+            className="arrow-button"
+            onClick={() => handleArrowButtonClick("right")}
+          >
+            <button> &#8594;</button>
+          </span>
+        )}
       </div>
     </div>
   );

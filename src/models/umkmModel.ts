@@ -6,6 +6,7 @@ export class Umkm {
   private _description: string;
   private _latitude: number;
   private _longitude: number;
+  private _address?: string;
   private _userId: string;
 
   constructor(
@@ -15,6 +16,7 @@ export class Umkm {
     description: string,
     latitude: number,
     longitude: number,
+    address: string,
     userId: string,
     id?: string
   ) {
@@ -25,6 +27,7 @@ export class Umkm {
     this._description = description;
     this._latitude = latitude;
     this._longitude = longitude;
+    this._address = address;
     this._userId = userId;
   }
 
@@ -60,8 +63,15 @@ export class Umkm {
   get userId(): string {
     return this._userId;
   }
+  get address(): string | undefined {
+    return this._address;
+  }
 
   // ✅ Setters
+  set address(value: string | undefined) {
+    this._address = value;
+  }
+
   set id(value: string | undefined) {
     this._id = value;
   }
@@ -105,6 +115,7 @@ export class Umkm {
       latitude: this._latitude,
       longitude: this._longitude,
       userId: this._userId,
+      address: this._address,
     };
   }
 
@@ -117,7 +128,9 @@ export class Umkm {
       json.description,
       json.latitude,
       json.longitude,
+      json.address,
       json.userId,
+
     );
   }
 }

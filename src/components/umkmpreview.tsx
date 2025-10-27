@@ -1,26 +1,23 @@
+import type { Umkm } from "../models/umkmModel";
 import "./umkmpreview.css";
 
-function UmkmPreview({
-  image,
-  name,
-  location,
-}: {
-  image?: string;
-  name?: string;
-  location?: string;
-}) {
+function UmkmPreview({ data }: { data?: Umkm }) {
   return (
     <div className="umkm-preview-card">
       <div className="umkm-preview-image-container">
         <img
-          src={image ? image : "https://via.placeholder.com/150"}
+          src={
+            data?.photoUrl ? data.photoUrl : "https://via.placeholder.com/150"
+          }
           className="umkm-preview-image"
         />
       </div>
       <div className="umkm-preview-info-container">
-        <div className="umkm-preview-name">{name ? name : "UMKM Name"}</div>
+        <div className="umkm-preview-name">
+          {data?.name ? data.name : "UMKM Name"}
+        </div>
         <span className="umkm-preview-location">
-          {location ? location : "Location"}
+          {data?.address ? data.address : "Location"}
         </span>
       </div>
     </div>

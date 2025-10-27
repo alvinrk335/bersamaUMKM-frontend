@@ -1,3 +1,21 @@
+/* Global CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,4 +31,6 @@
   -moz-osx-font-smoothing: grayscale;
   --color-primary: rgba(27, 56, 84, 1);
   --color-secondary: rgba(255, 255, 255, 1);
+  --color-accent: rgba(238, 238, 238, 1);
+  --text-primary: rgba(0, 0, 0, 0.87);
 }
