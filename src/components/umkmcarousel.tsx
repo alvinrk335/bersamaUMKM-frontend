@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./umkmcarousel.css";
 import UmkmPreview from "./umkmpreview";
 import { useEffect, useRef, useState } from "react";
@@ -6,11 +6,11 @@ import { Umkm } from "../models/umkmModel";
 
 function UmkmCarousel({ data }: { data: Umkm[] }) {
   const [umkmData, setUmkmData] = useState<Umkm[]>(data);
-
   const [noData, setNoData] = useState(false);
   const [autoScroll, setAutoScroll] = useState(true);
   const carouselRef = useRef<HTMLDivElement>(null);
   const type = data.length > 0 ? data[0].type : "UMKM";
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (data.length === 0) {
@@ -67,6 +67,10 @@ function UmkmCarousel({ data }: { data: Umkm[] }) {
     return () => clearTimeout(timeout);
   }
 
+  const handleUmkmClick = (umkm: Umkm | undefined) => {
+    navigate(`/umkm/detail/${umkm?.id}`);
+  };
+
   return (
     <div className="carousel-container">
       <div className="carousel-header">
@@ -91,7 +95,9 @@ function UmkmCarousel({ data }: { data: Umkm[] }) {
           {noData ? (
             <div className="no-data-message">No UMKM data available</div>
           ) : (
-            umkmData.map((item) => <UmkmPreview data={item} />)
+            umkmData.map((item) => (
+              <UmkmPreview data={item} onClick={handleUmkmClick} />
+            ))
           )}
         </div>
 

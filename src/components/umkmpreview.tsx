@@ -1,9 +1,21 @@
 import type { Umkm } from "../models/umkmModel";
 import "./umkmpreview.css";
 
-function UmkmPreview({ data }: { data?: Umkm }) {
+function UmkmPreview({
+  data,
+  onClick,
+}: {
+  data?: Umkm;
+  onClick?: (umkm: Umkm | undefined) => void;
+}) {
   return (
-    <div className="umkm-preview-card">
+    <div
+      className="umkm-preview-card"
+      onClick={() => {
+        console.log("Clicked data:", data);
+        onClick?.(data);
+      }}
+    >
       <div className="umkm-preview-image-container">
         <img
           src={

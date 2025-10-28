@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import "./map.css";
 import UmkmPreview from "../umkmpreview";
 import Teleport from "./Teleport";
+import iconPerson from "./PersonIconForMarker";
 
 export default function UmkmMap({ data }: { data: Umkm[] }) {
   const [currLocation, setCurrLocation] = useState<{
@@ -66,8 +67,13 @@ export default function UmkmMap({ data }: { data: Umkm[] }) {
               active={isTeleporting}
             />
           )}
+
+          {/* my location */}
           {currLocation && (
-            <Marker position={[currLocation.lat, currLocation.lng]}>
+            <Marker
+              position={[currLocation.lat, currLocation.lng]}
+              icon={iconPerson}
+            >
               <Popup>Your current location</Popup>
             </Marker>
           )}
@@ -85,8 +91,11 @@ export default function UmkmMap({ data }: { data: Umkm[] }) {
         </div>
       )}
       <div className="map-helper">
-        <button onClick={handleGetLocation}>Get my location</button>
-        <button onClick={handleMyLocation}>Go to my location</button>
+        {!currLocation ? (
+          <button onClick={handleGetLocation}>Get my location</button>
+        ) : (
+          <button onClick={handleMyLocation}>Go to my location</button>
+        )}
       </div>
     </div>
   );

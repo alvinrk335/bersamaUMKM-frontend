@@ -1,5 +1,5 @@
 export class Umkm {
-  private _id?: string;
+  private _id?: number;
   private _type: string;
   private _name: string;
   private _photoUrl: string;
@@ -7,6 +7,7 @@ export class Umkm {
   private _latitude: number;
   private _longitude: number;
   private _address?: string;
+  private _rating?: number | null;
   private _userId: string;
 
   constructor(
@@ -18,7 +19,8 @@ export class Umkm {
     longitude: number,
     address: string,
     userId: string,
-    id?: string
+    id?: number,
+    rating?: number | null
   ) {
     this._id = id;
     this._type = type;
@@ -29,10 +31,11 @@ export class Umkm {
     this._longitude = longitude;
     this._address = address;
     this._userId = userId;
+    this._rating = rating;
   }
 
   // ✅ Getters
-  get id(): string | undefined {
+  get id(): number | undefined {
     return this._id;
   }
 
@@ -66,13 +69,20 @@ export class Umkm {
   get address(): string | undefined {
     return this._address;
   }
+  get rating(): number | null | undefined {
+    return this._rating;
+  }
 
   // ✅ Setters
   set address(value: string | undefined) {
     this._address = value;
   }
 
-  set id(value: string | undefined) {
+  set rating(value: number | null | undefined) {
+    this._rating = value;
+  }
+
+  set id(value: number | undefined) {
     this._id = value;
   }
 
@@ -116,11 +126,13 @@ export class Umkm {
       longitude: this._longitude,
       userId: this._userId,
       address: this._address,
+      rating: this._rating,
     };
   }
 
   // ✅ Create a new instance from JSON
   static fromJSON(json: any): Umkm {
+    console.log("Creating Umkm from JSON:", json);
     return new Umkm(
       json.type,
       json.name,
@@ -129,8 +141,9 @@ export class Umkm {
       json.latitude,
       json.longitude,
       json.address,
+      json.rating,
+      json.id,
       json.userId,
-
     );
   }
 }

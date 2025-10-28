@@ -1,24 +1,27 @@
 import { useEffect } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useRoutes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/navbar.tsx";
-import Home from "./page/home/home.tsx";
+import routes from "./routes/route.tsx";
 
 function App() {
   const navigate = useNavigate();
+  const elements = useRoutes(routes);
+  const location = useLocation();
 
   useEffect(() => {
     navigate("/home");
   }, []);
 
+  const hideNavbarOn = ["/umkm/detail"];
+  const shouldHideNavbar = hideNavbarOn.some((path) =>
+    location.pathname.startsWith(path)
+  );
   return (
-    <body>
-      <Navbar />
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/umkm/${type}" element="#" />
-      </Routes>
-    </body>
+    <div className="App">
+      {!shouldHideNavbar && <Navbar />}
+      {elements}
+    </div>
   );
 }
 
