@@ -132,7 +132,6 @@ export class Umkm {
 
   // ✅ Create a new instance from JSON
   static fromJSON(json: any): Umkm {
-    console.log("Creating Umkm from JSON:", json);
     return new Umkm(
       json.type,
       json.name,
