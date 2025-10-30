@@ -1,13 +1,29 @@
 .map-container {
-  height: 100vh;
   width: 100%;
+  height: 80vh;
   max-width: 90vw;
 
   display: flex;
   flex-direction: column;
 
+  align-items: center;
+
   gap: 1rem;
-  margin: 0 auto;
+  margin: 3rem auto;
+  position: relative;
+}
+
+.map-title {
+  position: absolute;
+  padding: 0.5rem 1.2rem;
+  background-color: var(--color-primary);
+  border-radius: 1vh;
+  color: white;
+  font-size: 2.5vh;
+  font-weight: 500;
+  z-index: 100;
+  right: 11.5%;
+  top: 2%;
 }
 
 .leaflet-container {
@@ -24,10 +40,11 @@
 }
 
 .map-helper button {
-  background-color: var(--color-primary);
-  color: var(--color-secondary);
-  border-radius: 8px;
-  padding: 1.5rem;
+  background-color: lightgray;
+  color: gray;
+  border-radius: 1vh;
+  border: none;
+  padding: 1rem;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
@@ -35,7 +52,6 @@
 }
 
 .map-helper button:hover {
-  background-color: rgba(27, 56, 84, 0.9);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(27, 56, 84, 0.3);
 }
@@ -45,8 +61,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
+  height: 80%;
+  width: 80%;
   background-color: var(--color-accent);
   color: var(--text-primary);
 }

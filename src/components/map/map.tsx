@@ -48,12 +48,12 @@ export default function UmkmMap({ data }: { data: Umkm[] }) {
 
   return (
     <div className="map-container">
-      <h1>UMKM near you</h1>
+      <div className="map-title">Near You!</div>
       {currLocation ? (
         <MapContainer
           center={[currLocation?.lat || 0, currLocation?.lng || 0]}
           zoom={13}
-          style={{ height: "100%", width: "100%" }}
+          style={{ height: "80%", width: "80%" }}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
