@@ -87,7 +87,7 @@ function UmkmCarousel({ data }: { data: Umkm[] }) {
             className="arrow-button"
             onClick={() => handleArrowButtonClick("left")}
           >
-            <button> &#8592;</button>
+            <button> &#8249;</button>
           </span>
         )}
 
@@ -106,7 +106,7 @@ function UmkmCarousel({ data }: { data: Umkm[] }) {
             className="arrow-button"
             onClick={() => handleArrowButtonClick("right")}
           >
-            <button> &#8594;</button>
+            <button> &#8250; </button>
           </span>
         )}
       </div>

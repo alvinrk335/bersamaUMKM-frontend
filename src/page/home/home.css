@@ -1,2 +1,8 @@
 .home-body {
+  max-width: 1400px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 3vh;
 }

@@ -3,8 +3,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2vh;
   flex-direction: column;
+  margin: 1rem 0;
 }
 
 .carousel-header {
@@ -13,7 +13,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 1vh 0;
 }
 
 .umkm-type-name {
@@ -28,7 +27,6 @@
 
 .carousel-content {
   display: flex;
-  gap: 5vw;
   align-items: center;
   justify-content: space-around;
   overflow-x: hidden;
@@ -37,13 +35,19 @@
 }
 
 .carousel-wrapper {
-  padding: 2vw;
-  width: 90%;
+  padding: 0 1vw;
+  width: 85%;
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 0 auto;
   align-items: center;
+  /* background-color: red; */
+}
+
+.carousel-container:hover .arrow-button {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .arrow-button {
@@ -55,6 +59,9 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
 }
 
 .arrow-button:first-child {
@@ -67,27 +74,22 @@
 
 .arrow-button button {
   background-color: var(--color-secondary);
-  border: 2px solid var(--color-accent);
+  border: none;
   border-radius: 50%;
   width: 50px;
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 4vh;
   font-weight: bold;
   color: var(--color-primary);
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px lightslategrey;
 }
 
 .arrow-button button:hover {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: var(--color-secondary);
-  box-shadow: 0 4px 12px var(--color-primary);
-  transform: scale(1.1);
+  transform: scale(1.5);
 }
 
 .arrow-button button:active {
