@@ -73,7 +73,7 @@
 }
 
 .arrow-button button {
-  background-color: var(--color-secondary);
+  background-color: transparent;
   border: none;
   border-radius: 50%;
   width: 50px;

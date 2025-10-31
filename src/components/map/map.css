@@ -7,9 +7,10 @@
   flex-direction: column;
 
   align-items: center;
+  justify-content: center;
 
   gap: 1rem;
-  margin: 3rem auto;
+  /* margin: 3rem auto; */
   position: relative;
 }
 
@@ -21,9 +22,9 @@
   color: white;
   font-size: 2.5vh;
   font-weight: 500;
-  z-index: 100;
-  right: 11.5%;
-  top: 2%;
+  z-index: 10;
+  left: 8.5%;
+  top: 3.5%;
 }
 
 .leaflet-container {
