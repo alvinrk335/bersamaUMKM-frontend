@@ -7,12 +7,13 @@ import routes from "./routes/route.tsx";
 function App() {
   const navigate = useNavigate();
   const elements = useRoutes(routes);
-  //unused
-  const location = useLocation();
 
   useEffect(() => {
     navigate("/home");
   }, []);
+
+  //unused
+  const location = useLocation();
 
   //unused
   const hideNavbarOn = ["/umkm/detail"];
