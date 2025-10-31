@@ -19,7 +19,6 @@ function Home() {
       const data = await response.json();
 
       if (response.status === 200) {
-        console.log(data);
         const umkmList = data.map((item: any) => Umkm.fromJSON(item));
         setUmkmData(umkmList);
       } else {

@@ -10,7 +10,6 @@ export default function UmkmDetail() {
   const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL;
 
   useEffect(() => {
-    console.log("Fetching UMKM detail for ID:", id);
     const fetchData = async () => {
       const response = await fetch(`${backendUrl}/umkm/detail/${id}`);
 
@@ -39,9 +38,7 @@ export default function UmkmDetail() {
         </div>
       </section>
 
-      <section className="product-container">
-        j
-      </section>
+      <section className="product-container">j</section>
     </div>
   );
 }

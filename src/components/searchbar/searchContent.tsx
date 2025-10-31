@@ -1,34 +1,47 @@
 import type { Umkm } from "../../models/umkmModel";
+import CircleLoading from "../CircleLoading/CircleLoading";
+import FirstTimeContent from "./FirstTimeContent";
+import AiSearchContent from "./aiSearchContent";
+import NormalSearchContent from "./normalSearchContent";
 import "./searchContent.css";
 export default function searchContent({
   data,
-  type,
+  dataType,
+  searchType,
+  loading,
+  firstTime,
 }: {
   data?: Umkm[];
-  type?: "umkm" | "product";
+  dataType?: "umkm" | "product";
+  searchType?: "normal" | "ai";
+  loading?: boolean;
+  firstTime?: boolean;
 }) {
-  return (
-    <div className="search-content">
-      {/* {data.map(item => (
-                <div key={item.id}>
-                    <h3>{item.name}</h3>
-                    {type === "umkm" ? (
-                        <p>{item.address}</p>
-                    ) : (
-                        <p>{item.description}</p>
-                    )}
-                </div>
-            ))} */}
-
-      <div className="item-container">
-        <img src="#" alt="umkm-pic" />
-        <div className="item-info">
-          <h3>UMKM Name</h3>
-          <p>UMKM Address</p>
-          <p>UMKM rating</p>
+  if (firstTime) {
+    return <FirstTimeContent dataType={dataType} searchType={searchType} />;
+  }
+  if (loading) {
+    const cls = searchType === "ai" ? "search-content-ai" : "search-content";
+    return (
+      <div className={cls} role="status" aria-live="polite">
+        <div className="search-loading">
+          <CircleLoading />
         </div>
-        {type == "umkm" ? <></> : <></>}
       </div>
-    </div>
-  );
+    );
+  }
+
+  if (Array.isArray(data) && data.length === 0) {
+    const cls = searchType === "ai" ? "search-content-ai" : "search-content";
+    return (
+      <div className={cls} role="status" aria-live="polite">
+        <div className="no-data-message">No results found</div>
+      </div>
+    );
+  }
+  if (searchType === "normal") {
+    return <NormalSearchContent data={data} type={dataType} />;
+  } else if (searchType === "ai") {
+    return <AiSearchContent data={data} dataType={dataType} />;
+  }
 }

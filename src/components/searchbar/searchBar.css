@@ -64,13 +64,35 @@
   transition: all 0.3s ease;
 }
 
+.search-input.active {
+  background-color: var(--color-gemini);
+  background-image: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-secondary)
+  );
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: slidingColor 3s linear forwards infinite;
+  color: var(--text-inverse);
+  transition: color 0.3s ease;
+}
+@keyframes slidingColor {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
 .search-input:focus {
   border-color: var(--color-primary);
   box-shadow: 0 4px 12px rgba(27, 56, 84, 0.15);
 }
 
-
-.search-bar-container:has(.search-content) .search-input {
+.search-bar-container:has(.search-content) .search-input,
+.search-bar-container:has(.search-content-ai) .search-input {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-bottom: none;
