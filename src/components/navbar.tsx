@@ -2,7 +2,7 @@ import "./navbar.css";
 import Logo from "./logo";
 import Home from "../assets/homeLogo.png";
 import About from "../assets/aboutLogo.png";
-import SearchBar from "./searchBar";
+import SearchBar from "./searchbar/searchBar";
 
 function Navbar() {
   return (

@@ -1,0 +1,82 @@
+.search-bar-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  flex-direction: column;
+  z-index: 100;
+}
+
+#gemini-logo {
+  position: absolute;
+  right: 6vh;
+  width: 3.5vh;
+  height: 3.5vh;
+  z-index: 10;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+#gemini-logo:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(63, 94, 251, 0.5);
+}
+
+.search-input.active ~ #gemini-logo {
+  transform: scale(1.05);
+}
+
+.search-icon {
+  position: absolute;
+  left: 2vh;
+  color: var(--color-primary);
+  font-size: 2.2vh;
+  z-index: 10;
+}
+
+.close-icon {
+  position: absolute;
+  right: 2vh;
+  color: var(--color-primary);
+  font-size: 2.2vh;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.close-icon:hover {
+  color: rgba(27, 56, 84, 0.7);
+  transform: scale(1.1);
+}
+
+.search-input {
+  width: 100%;
+  padding: 1.5vh 1.5vh 1.5vh 6vh;
+  border-radius: 12px;
+  border: 2px solid var(--color-accent);
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  font-size: 1.8vh;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(27, 56, 84, 0.1);
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(27, 56, 84, 0.15);
+}
+
+
+.search-bar-container:has(.search-content) .search-input {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: none;
+  border-color: var(--color-primary);
+}
+
+.search-input::placeholder {
+  color: var(--color-background);
+}

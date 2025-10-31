@@ -40,7 +40,7 @@ export default function UmkmDetail() {
       </section>
 
       <section className="product-container">
-        
+        j
       </section>
     </div>
   );
