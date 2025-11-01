@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import type { Umkm } from "../../models/umkmModel";
+import type { Umkm } from "../../models/Umkm";
 import StarIcon from "../Icon/StarIcon";
 
 export default function AiSearchContent({

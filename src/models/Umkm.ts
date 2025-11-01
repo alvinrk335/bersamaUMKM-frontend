@@ -114,7 +114,6 @@ export class Umkm {
     this._userId = value;
   }
 
-  // ✅ Convert this object to JSON
   toJSON(): object {
     return {
       id: this._id,
@@ -130,7 +129,6 @@ export class Umkm {
     };
   }
 
-  // ✅ Create a new instance from JSON
   static fromJSON(json: any): Umkm {
     return new Umkm(
       json.type,

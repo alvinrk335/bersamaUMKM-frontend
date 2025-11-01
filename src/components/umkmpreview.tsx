@@ -1,4 +1,4 @@
-import type { Umkm } from "../models/umkmModel";
+import type { Umkm } from "../models/Umkm";
 import "./umkmpreview.css";
 
 function UmkmPreview({

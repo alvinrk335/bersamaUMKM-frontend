@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./searchBar.css";
 import SearchContent from "./searchContent";
-import { Umkm } from "../../models/umkmModel";
+import { Umkm } from "../../models/Umkm";
 
 function SearchBar() {
   const [searchInput, setSearchInput] = useState("");

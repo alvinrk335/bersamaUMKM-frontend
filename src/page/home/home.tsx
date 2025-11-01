@@ -1,7 +1,7 @@
 import "./home.css";
 import UmkmCarousel from "../../components/umkmcarousel";
 import { useEffect, useState } from "react";
-import { Umkm } from "../../models/umkmModel";
+import { Umkm } from "../../models/Umkm";
 import DotLoading from "../../components/DotLoading/DotLoading";
 import UmkmMap from "../../components/map/map";
 

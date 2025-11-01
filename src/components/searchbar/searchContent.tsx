@@ -1,4 +1,4 @@
-import type { Umkm } from "../../models/umkmModel";
+import type { Umkm } from "../../models/Umkm";
 import CircleLoading from "../CircleLoading/CircleLoading";
 import FirstTimeContent from "./FirstTimeContent";
 import AiSearchContent from "./aiSearchContent";

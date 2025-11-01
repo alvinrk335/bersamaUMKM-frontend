@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./umkmcarousel.css";
 import UmkmPreview from "./umkmpreview";
 import { useEffect, useRef, useState } from "react";
-import { Umkm } from "../models/umkmModel";
+import { Umkm } from "../models/Umkm";
 
 function UmkmCarousel({ data }: { data: Umkm[] }) {
   const [umkmData, setUmkmData] = useState<Umkm[]>(data);

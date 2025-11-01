@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom";
-import type { Umkm } from "../../models/umkmModel";
+import type { Umkm } from "../../models/Umkm";
 import { useEffect, useState } from "react";
 import "./UmkmDetail.css";
+import Product from "../../models/Product";
+import ProductView from "../../components/Product/ProductView";
 
 function haversineDistance(
   lat1: number,
@@ -9,7 +11,7 @@ function haversineDistance(
   lat2: number,
   lon2: number
 ) {
-  const R = 6371; // km
+  const R = 6371;
 
   const dLat = ((lat2 - lat1) * Math.PI) / 180;
   const dLon = ((lon2 - lon1) * Math.PI) / 180;
@@ -28,16 +30,33 @@ function haversineDistance(
 export default function UmkmDetail() {
   const { id } = useParams<{ id: string }>();
   const [umkm, setUmkm] = useState<Umkm | undefined>(undefined);
+  const [products, setProducts] = useState<Product[]>([]);
   const [distance, setDistance] = useState<string>("");
 
   const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL;
 
+  //fetch umkm detail
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(`${backendUrl}/umkm/detail/${id}`);
       if (response.ok) {
         const data = await response.json();
         setUmkm(data);
+      }
+    };
+    fetchData();
+  }, [id]);
+
+  //fetch products
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`${backendUrl}/product/get/by/umkmId/${id}`);
+      if (response.ok) {
+        const data = await response.json();
+        const productList = data.map((prod: any) =>
+          Product.fromJson(prod)
+        );
+        setProducts(productList);
       }
     };
     fetchData();
@@ -99,7 +118,17 @@ export default function UmkmDetail() {
         </div>
       </section>
 
-      <section className="product-container"></section>
+      <section className="product-container">
+        {products.length > 0 ? (
+          products.map((product) => (
+            <div className="product-card" key={product.id}>
+              <ProductView data={product} />
+            </div>
+          ))
+        ) : (
+          <p>No products found</p>
+        )}
+      </section>
     </div>
   );
 }

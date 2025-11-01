@@ -1,5 +1,5 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import type { Umkm } from "../../models/umkmModel";
+import type { Umkm } from "../../models/Umkm";
 import { useEffect, useState } from "react";
 import "./map.css";
 import UmkmPreview from "../umkmpreview";
