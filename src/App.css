@@ -6,3 +6,9 @@
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 768px) {
+  .App {
+    padding: 3px;
+  }
+}
