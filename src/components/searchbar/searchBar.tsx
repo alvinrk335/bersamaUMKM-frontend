@@ -25,23 +25,30 @@ function SearchBar() {
       input.value = "";
     }
   }
+
+  //fetchn data for ai mode input
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      const inputElement = document.getElementById("searchInput");
+      const inputElement = document.getElementById(
+        "searchInput"
+      ) as HTMLInputElement | null;
       if (!inputElement) return;
       if (event.key === "Enter") {
+        const value = inputElement.value;
+        setSearchInput(value);
+        setFirstTime(false);
         event.preventDefault();
         const fetchAiResults = async () => {
           setLoading(true);
           try {
             const response = await fetch(
-              `${backendUrl}/search/by/query?query=${searchInput}`
+              `${backendUrl}/search/by/query?query=${encodeURIComponent(value)}`
             );
             if (response.ok) {
               const data = await response.json();
               console.log("AI search result:", data);
 
-              const umkmList = data.umkms.map((umkm: any) =>
+              const umkmList = data.data.map((umkm: any) =>
                 Umkm.fromJSON(umkm)
               );
               setSearchResults(umkmList);
@@ -140,6 +147,7 @@ function SearchBar() {
 
   //styling for ai button clicked
   useEffect(() => {
+    setFirstTime(true);
     const inputElement = document.getElementById("searchInput");
     if (!inputElement) return;
     if (aiButtonClicked) {
@@ -148,6 +156,15 @@ function SearchBar() {
       inputElement.classList.remove("active");
     }
   }, [aiButtonClicked]);
+
+  //clear cache saat ilang first time
+  useEffect(() => {
+    if (firstTime) {
+      setQuery("");
+      setSearchInput("");
+      setSearchResults([]);
+    }
+  }, [firstTime]);
 
   //set first time on exit
   useEffect(() => {

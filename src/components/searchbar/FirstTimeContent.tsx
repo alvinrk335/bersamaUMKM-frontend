@@ -42,61 +42,43 @@ export default function FirstTimeContent({
           : "search-content search-first-time"
       }
     >
-      <h3>
-        {searchType === "ai"
-          ? "Cari dengan bahasa sehari-hari (AI)"
-          : "Tips untuk mencari"}
-      </h3>
       {searchType === "ai" ? (
-        <>
-          <p className="ft-desc">
-            Kamu bisa menuliskan pertanyaan atau perintah dengan kalimat biasa.
-            Contoh: jelaskan apa yang kamu cari, sertakan lokasi, preferensi,
-            atau kebutuhan khusus.
+        <div style={{ textAlign: "center", padding: "1rem 0" }}>
+          <h3 style={{ margin: 0 }}>Cari dengan bahasa sehari-hari</h3>
+          <p className="ft-desc" style={{ marginTop: "0.5rem" }}>
+            Ketik pertanyaan atau perintah seperti berbicara kepada teman —
+            gunakan bahasa yang spesifik dengan menyebutkan lokasi, jenis
+            makanan, atau kebutuhan khusus. Contoh: "Tempat makan bakmi di dekat
+            Alam Sutera" atau "Rekomendasikan kafe kopi terbaik dekat saya
+            dengan harga terjangkau."
           </p>
-        </>
+        </div>
       ) : (
-        <p className="ft-desc">
-          Coba contoh pencarian ini atau ketik kata kunci yang relevan.
-        </p>
-      )}
-      <div className="ft-examples">
-        {examples.map((ex) => (
-          <button
-            key={ex}
-            className="ft-example-btn"
-            onClick={() => applyExample(ex)}
-          >
-            {ex}
-          </button>
-        ))}
-      </div>
-      <div className="ft-guides">
-        {searchType === "ai" ? (
-          <>
-            <div>
-              • Tulis seperti kamu sedang bertanya ke teman (mis. "Cari toko kue
-              yang buka malam ini dekat Senen")
-            </div>
-            <div>
-              • Sebutkan preferensi, mis. harga, rating, atau jenis (mis. "kue
-              tradisional, harga terjangkau")
-            </div>
-            <div>
-              • Minta rekomendasi, rute, atau perbandingan (mis. "rekomendasikan
-              3 warung kopi terbaik di sekitar")
-            </div>
-          </>
-        ) : (
-          <>
+        <>
+          <h3>Tips untuk mencari</h3>
+          <p className="ft-desc">
+            Coba contoh pencarian ini atau ketik kata kunci yang relevan.
+          </p>
+          <div className="ft-examples">
+            {examples.map((ex) => (
+              <button
+                key={ex}
+                className="ft-example-btn"
+                onClick={() => applyExample(ex)}
+              >
+                {ex}
+              </button>
+            ))}
+          </div>
+          <div className="ft-guides">
             <div>
               • Gunakan nama tempat, kategori, atau produk (mis. "toko roti")
             </div>
             <div>• Aktifkan AI untuk hasil rekomendasi (klik logo Gemini)</div>
             <div>• Gunakan alamat atau kota untuk mempersempit hasil</div>
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

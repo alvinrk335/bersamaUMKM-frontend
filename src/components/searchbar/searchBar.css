@@ -77,6 +77,12 @@
 
   transition: color 0.3s ease;
 }
+
+/* Ensure input text color stays primary when AI mode / active state is on */
+.search-input.active,
+.search-bar-container.ai-active .search-input {
+  color: var(--color-primary);
+}
 @keyframes slidingColor {
   0% {
     background-position: 0 0;
