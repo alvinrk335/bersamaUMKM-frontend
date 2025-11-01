@@ -15,13 +15,63 @@ function SearchBar() {
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  //fetch data for input
+  //clear elementinput
+  function clearInput() {
+    const input = document.getElementById(
+      "searchInput"
+    ) as HTMLInputElement | null;
+
+    if (input) {
+      input.value = "";
+    }
+  }
   useEffect(() => {
-    setLoading(true);
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const inputElement = document.getElementById("searchInput");
+      if (!inputElement) return;
+      if (event.key === "Enter") {
+        event.preventDefault();
+        const fetchAiResults = async () => {
+          setLoading(true);
+          try {
+            const response = await fetch(
+              `${backendUrl}/search/by/query?query=${searchInput}`
+            );
+            if (response.ok) {
+              const data = await response.json();
+              console.log("AI search result:", data);
+
+              const umkmList = data.umkms.map((umkm: any) =>
+                Umkm.fromJSON(umkm)
+              );
+              setSearchResults(umkmList);
+            }
+          } catch (error) {
+            console.error("Error fetching AI results:", error);
+          } finally {
+            clearInput();
+            setLoading(false);
+          }
+        };
+        fetchAiResults();
+      }
+    };
+
+    if (aiButtonClicked) {
+      document.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [aiButtonClicked]);
+
+  //fetch data for normal mode input
+  useEffect(() => {
     if (searchInput === "") return;
     if (isTyping) {
-      if (aiButtonClicked) {
-      } else {
+      if (!aiButtonClicked) {
+        setLoading(true);
         const fetchData = async () => {
           try {
             const response = await fetch(
@@ -30,7 +80,6 @@ function SearchBar() {
 
             if (response.ok) {
               const data = await response.json();
-              console.log("fetched data:", data);
 
               const umkmList = data.umkms.map((umkm: any) =>
                 Umkm.fromJSON(umkm)
@@ -54,9 +103,11 @@ function SearchBar() {
   //change handler
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFirstTime(false);
-    const value = e.target.value;
-    setQuery(value);
-    setIsTyping(value.trim() !== "");
+    if (!aiButtonClicked) {
+      const value = e.target.value;
+      setQuery(value);
+      setIsTyping(value.trim() !== "");
+    }
   };
 
   useEffect(() => {
@@ -98,14 +149,12 @@ function SearchBar() {
     }
   }, [aiButtonClicked]);
 
-
   //set first time on exit
   useEffect(() => {
-    if(!isTyping){
+    if (!isTyping) {
       setFirstTime(true);
     }
   }, [isTyping]);
-
 
   //styling for typing state
   useEffect(() => {

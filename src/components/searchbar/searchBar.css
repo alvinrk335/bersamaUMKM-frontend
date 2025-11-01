@@ -74,7 +74,7 @@
   background-origin: border-box;
   background-clip: padding-box, border-box;
   animation: slidingColor 3s linear forwards infinite;
-  color: var(--text-inverse);
+
   transition: color 0.3s ease;
 }
 @keyframes slidingColor {
