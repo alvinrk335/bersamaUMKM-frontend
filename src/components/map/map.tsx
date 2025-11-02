@@ -53,7 +53,7 @@ export default function UmkmMap({ data }: { data: Umkm[] }) {
         <MapContainer
           center={[currLocation?.lat || 0, currLocation?.lng || 0]}
           zoom={13}
-          style={{ height: "80%", width: "80%" }}
+          style={{ height: "90%", width: "90%" }}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

@@ -32,7 +32,7 @@ function Home() {
   useEffect(() => {
     if (umkmData.length > 0) {
       setFoodData(umkmData.filter((item) => item.type === "Food"));
-      setDrinkData(umkmData.filter((item) => item.type === "Drinks"));
+      setDrinkData(umkmData.filter((item) => item.type === "Drink"));
       setServiceData(umkmData.filter((item) => item.type === "Service"));
     }
   }, [umkmData]);
