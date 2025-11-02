@@ -53,9 +53,7 @@ export default function UmkmDetail() {
       const response = await fetch(`${backendUrl}/product/get/by/umkmId/${id}`);
       if (response.ok) {
         const data = await response.json();
-        const productList = data.map((prod: any) =>
-          Product.fromJson(prod)
-        );
+        const productList = data.map((prod: any) => Product.fromJson(prod));
         setProducts(productList);
       }
     };
@@ -116,18 +114,18 @@ export default function UmkmDetail() {
             </span>
           </span>
         </div>
-      </section>
 
-      <section className="product-container">
-        {products.length > 0 ? (
-          products.map((product) => (
-            <div className="product-card" key={product.id}>
-              <ProductView data={product} />
-            </div>
-          ))
-        ) : (
-          <p>No products found</p>
-        )}
+        <section className="product-container">
+          {products.length > 0 ? (
+            products.map((product) => (
+              <div className="product-card" key={product.id}>
+                <ProductView data={product} />
+              </div>
+            ))
+          ) : (
+            <p>No products found</p>
+          )}
+        </section>
       </section>
     </div>
   );

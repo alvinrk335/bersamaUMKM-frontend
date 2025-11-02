@@ -1,5 +1,6 @@
 import "./Footer.css";
 import Logo from "../logo";
+import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
 
 function Footer() {
   return (
@@ -20,9 +21,15 @@ function Footer() {
             <Logo width={35} height={10} />
           </div>
           <div className="footer-bottom-section-social-media">
-            <a href="#">📸</a>
-            <a href="#">💼</a>
-            <a href="#">📘</a>
+            <a href="#">
+              <FaInstagram size={40} />
+            </a>
+            <a href="#">
+              <FaLinkedin size={40} />
+            </a>
+            <a href="#">
+              <FaFacebook size={40} />
+            </a>
           </div>
         </div>
       </div>
