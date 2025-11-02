@@ -4,16 +4,19 @@ import { useEffect, useState } from "react";
 import { Umkm } from "../../models/Umkm";
 import DotLoading from "../../components/DotLoading/DotLoading";
 import UmkmMap from "../../components/map/map";
+import { useLoading } from "../../contexts/LoadingContext";
 
 function Home() {
   const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL;
   const [loading, setLoading] = useState(true);
+  const { setIsLoading } = useLoading();
   const [umkmData, setUmkmData] = useState<Umkm[]>([]);
   const [productData, setProductData] = useState<Umkm[]>([]);
   const [serviceData, setServiceData] = useState<Umkm[]>([]);
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
+      setIsLoading(true);
       const response = await fetch(`${backendUrl}/umkm/get/all`);
       const data = await response.json();
 
@@ -24,6 +27,7 @@ function Home() {
         console.error("Failed to fetch UMKM data");
       }
       setLoading(false);
+      setIsLoading(false);
     };
     fetchData();
   }, []);

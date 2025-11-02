@@ -17,9 +17,7 @@ function App() {
 
   //unused
   const hideNavbarOn = ["/umkm/detail"];
-  const shouldHideNavbar = hideNavbarOn.some((path) =>
-    location.pathname.startsWith(path)
-  );
+  hideNavbarOn.some((path) => location.pathname.startsWith(path));
   return <div className="App">{elements}</div>;
 }
 

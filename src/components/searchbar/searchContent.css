@@ -316,6 +316,14 @@
   line-height: 1.3;
 }
 
+.ai-item-umkm-name {
+  font-size: 0.85rem;
+  color: rgba(27, 56, 84, 0.8);
+  font-weight: 500;
+  margin: 0.125rem 0 0 0;
+  line-height: 1.2;
+}
+
 .ai-item-subtitle {
   font-size: 0.875rem;
   color: rgba(27, 56, 84, 0.7);

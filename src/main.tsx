@@ -8,9 +8,11 @@ import { BrowserRouter } from "react-router-dom";
 import Footer from "./components/footer/Footer.tsx";
 import Navbar from "./components/navbar.tsx";
 import { useLocation } from "react-router-dom";
+import { LoadingProvider, useLoading } from "./contexts/LoadingContext.tsx";
 
 const AppWrapper = () => {
   const location = useLocation();
+  const { isLoading } = useLoading();
   const hideNavbarOn = ["/umkm/detail"];
   const shouldHideNavbar = hideNavbarOn.some((path) =>
     location.pathname.startsWith(path)
@@ -18,9 +20,9 @@ const AppWrapper = () => {
 
   return (
     <>
-      {!shouldHideNavbar && <Navbar />}
+      {!shouldHideNavbar && !isLoading && <Navbar />}
       <App />
-      <Footer />
+      {!isLoading && <Footer />}
     </>
   );
 };
@@ -28,7 +30,9 @@ const AppWrapper = () => {
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <AppWrapper />
+      <LoadingProvider>
+        <AppWrapper />
+      </LoadingProvider>
     </BrowserRouter>
   </StrictMode>
 );
