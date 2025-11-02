@@ -23,8 +23,7 @@
   font-size: 20px;
   font-weight: 500;
   z-index: 10;
-  left: 8.5%;
-  top: 5%;
+  top: 2.5%; */
 }
 
 .leaflet-container {
@@ -41,8 +40,8 @@
 }
 
 .map-helper button {
-  background-color: lightgray;
-  color: gray;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
   border-radius: 1vh;
   border: none;
   padding: 1rem;
@@ -62,8 +61,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 80%;
-  width: 80%;
+  height: 90%;
+  width: 90%;
   background-color: var(--color-accent);
   color: var(--text-primary);
 }
