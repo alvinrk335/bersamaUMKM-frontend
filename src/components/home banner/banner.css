@@ -1,0 +1,66 @@
+.banner-container {
+  display: flex;
+  width: 100%;
+
+  aspect-ratio: 3 / 1;
+
+  position: relative;
+  overflow: hidden;
+  overflow-x: clip;
+}
+
+.banner-wrapper {
+  width: 300%;
+  display: flex;
+}
+
+.banner {
+  width: 100vw;
+  min-width: 100vw;
+  flex-shrink: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  color: white;
+  gap: 1rem;
+  font-family: sans-serif;
+  padding: 40px;
+  background-position: center;
+}
+
+.banner h2 {
+  font-size: 4vw;
+}
+
+.banner button {
+  padding: 1.5vh 3vh;
+  font-size: 1.5vw;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border: none;
+  border-radius: 1vh;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.banner button:hover {
+  transform: translateY(-0.5vh);
+}
+
+.food-banner {
+  background: url("../../../public/food-banner.jpg") center/cover no-repeat;
+  background-color: rgba(0, 0, 0, 0.25);
+  background-blend-mode: darken;
+}
+.drink-banner {
+  background: url("../../../public/beverage-banner.jpg") center/cover no-repeat;
+  background-color: rgba(0, 0, 0, 0.25);
+  background-blend-mode: darken;
+}
+.service-banner {
+  background: url("../../../public/service-banner.jpg") center/cover no-repeat;
+  background-color: rgba(0, 0, 0, 0.25);
+  background-blend-mode: darken;
+}

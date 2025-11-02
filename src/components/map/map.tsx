@@ -86,7 +86,9 @@ export default function UmkmMap({ data }: { data: Umkm[] }) {
           ))}
         </MapContainer>
       ) : (
-        <div className="map-placeholder"></div>
+        <div className="map-placeholder">
+          <p>Please Activate Your Location!</p>
+        </div>
       )}
       <div className="map-helper">
         {!currLocation ? (

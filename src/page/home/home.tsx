@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Umkm } from "../../models/Umkm";
 import DotLoading from "../../components/DotLoading/DotLoading";
 import UmkmMap from "../../components/map/map";
+import Banner from "../../components/home banner/banner";
 
 function Home() {
   const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL;
@@ -46,6 +47,7 @@ function Home() {
   }
   return (
     <div className="home-body">
+      <Banner />
       <UmkmCarousel data={foodData} />
       <UmkmCarousel data={drinkData} />
       <UmkmCarousel data={serviceData} />
