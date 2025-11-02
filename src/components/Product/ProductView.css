@@ -81,7 +81,6 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  -webkit-line-clamp: 2; /* show only 2 lines */
   font-size: 0.85rem;
   color: #555;
   margin: 0.2rem 0 0;

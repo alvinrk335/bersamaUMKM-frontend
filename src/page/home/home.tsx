@@ -9,8 +9,7 @@ function Home() {
   const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL;
   const [loading, setLoading] = useState(true);
   const [umkmData, setUmkmData] = useState<Umkm[]>([]);
-  const [foodData, setFoodData] = useState<Umkm[]>([]);
-  const [drinkData, setDrinkData] = useState<Umkm[]>([]);
+  const [productData, setProductData] = useState<Umkm[]>([]);
   const [serviceData, setServiceData] = useState<Umkm[]>([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -31,8 +30,11 @@ function Home() {
 
   useEffect(() => {
     if (umkmData.length > 0) {
-      setFoodData(umkmData.filter((item) => item.type === "Food"));
-      setDrinkData(umkmData.filter((item) => item.type === "Drinks"));
+      setProductData(
+        umkmData.filter((item) => {
+          return item.type === "Food" || item.type === "Drink";
+        })
+      );
       setServiceData(umkmData.filter((item) => item.type === "Service"));
     }
   }, [umkmData]);
@@ -46,9 +48,8 @@ function Home() {
   }
   return (
     <div className="home-body">
-      <UmkmCarousel data={foodData} />
-      <UmkmCarousel data={drinkData} />
-      <UmkmCarousel data={serviceData} />
+      <UmkmCarousel data={productData} title="Products" />
+      <UmkmCarousel data={serviceData} title="Services" />
       <UmkmMap data={umkmData} />
     </div>
   );

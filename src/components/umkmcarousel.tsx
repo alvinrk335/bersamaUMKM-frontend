@@ -4,7 +4,7 @@ import UmkmPreview from "./umkmpreview";
 import { useEffect, useRef, useState } from "react";
 import { Umkm } from "../models/Umkm";
 
-function UmkmCarousel({ data }: { data: Umkm[] }) {
+function UmkmCarousel({ data, title }: { data: Umkm[]; title?: string }) {
   const [umkmData, setUmkmData] = useState<Umkm[]>(data);
   const [noData, setNoData] = useState(false);
   const [autoScroll, setAutoScroll] = useState(true);
@@ -74,7 +74,7 @@ function UmkmCarousel({ data }: { data: Umkm[] }) {
   return (
     <div className="carousel-container">
       <div className="carousel-header">
-        <div className="umkm-type-name">{type}</div>
+        <div className="umkm-type-name">{title}</div>
         <div className="see-more-container">
           <Link to={`/umkm/${type}`} className="see-more-link">
             see more

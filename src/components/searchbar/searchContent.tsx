@@ -18,7 +18,7 @@ export default function searchContent({
   firstTime?: boolean;
 }) {
   if (firstTime) {
-    return <FirstTimeContent dataType={dataType} searchType={searchType} />;
+    return <FirstTimeContent searchType={searchType} />;
   }
   if (loading) {
     const cls = searchType === "ai" ? "search-content-ai" : "search-content";

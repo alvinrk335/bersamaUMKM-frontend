@@ -147,7 +147,6 @@ function SearchBar() {
 
   //styling for ai button clicked
   useEffect(() => {
-    setFirstTime(true);
     const inputElement = document.getElementById("searchInput");
     if (!inputElement) return;
     if (aiButtonClicked) {
@@ -185,7 +184,6 @@ function SearchBar() {
       inputElement.style.backgroundImage = "none";
       inputElement.style.backgroundOrigin = "";
       inputElement.style.backgroundClip = "";
-      inputElement.style.transition = "all 0.3s ease";
     }
 
     function setOnActiveStyle() {
@@ -195,8 +193,6 @@ function SearchBar() {
         "linear-gradient(var(--color-secondary), var(--color-secondary)), var(--color-gemini)";
       inputElement.style.backgroundOrigin = "border-box";
       inputElement.style.backgroundClip = "padding-box, border-box";
-
-      inputElement.style.transition = "all 0.3s ease";
     }
 
     if (isTyping) {
