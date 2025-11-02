@@ -86,16 +86,15 @@ export default function UmkmMap({ data }: { data: Umkm[] }) {
           ))}
         </MapContainer>
       ) : (
-        <div className="map-placeholder">
-          <div className="map-helper">
-            {!currLocation ? (
-              <button onClick={handleGetLocation}>Get my location</button>
-            ) : (
-              <button onClick={handleMyLocation}>Go to my location</button>
-            )}
-          </div>
-        </div>
+        <div className="map-placeholder"></div>
       )}
+      <div className="map-helper">
+        {!currLocation ? (
+          <button onClick={handleGetLocation}>Get my location</button>
+        ) : (
+          <button onClick={handleMyLocation}>Go to my location</button>
+        )}
+      </div>
     </div>
   );
 }
