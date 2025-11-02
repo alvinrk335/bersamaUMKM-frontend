@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate, useRoutes } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/navbar.tsx";
+
 import routes from "./routes/route.tsx";
 
 function App() {

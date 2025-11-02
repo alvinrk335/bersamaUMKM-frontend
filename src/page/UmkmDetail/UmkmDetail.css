@@ -5,6 +5,37 @@
   color: var(--text-primary);
   width: 100%;
   min-height: 100vh;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.back-button i {
+  font-size: 1.2rem;
+  color: var(--color-primary);
 }
 
 .background-picture {
@@ -156,6 +187,17 @@
 }
 
 @media (max-width: 768px) {
+  .back-button {
+    top: 1rem;
+    left: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .back-button i {
+    font-size: 1rem;
+  }
+
   .background-picture {
     max-height: 35vh;
   }

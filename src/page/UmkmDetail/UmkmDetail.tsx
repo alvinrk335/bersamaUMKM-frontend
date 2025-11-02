@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import type { Umkm } from "../../models/Umkm";
 import { useEffect, useState } from "react";
 import "./UmkmDetail.css";
@@ -29,6 +29,7 @@ function haversineDistance(
 
 export default function UmkmDetail() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [umkm, setUmkm] = useState<Umkm | undefined>(undefined);
   const [products, setProducts] = useState<Product[]>([]);
   const [distance, setDistance] = useState<string>("");
@@ -86,6 +87,14 @@ export default function UmkmDetail() {
 
   return (
     <div className="umkm-detail-container">
+      <button
+        className="back-button"
+        onClick={() => navigate(-1)}
+        aria-label="Go back"
+      >
+        <i className="fas fa-arrow-left"></i>
+      </button>
+
       <div className="background-picture">
         <img src={umkm?.photoUrl} alt={umkm?.name} id="background-photo" />
       </div>
